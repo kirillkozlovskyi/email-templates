@@ -1,6 +1,6 @@
 .DS_Store
 .idea
-*.jpg
-*.jpeg
-*.zip
-*.txt
+**.jpg
+**.jpeg
+**.zip
+**.txt
