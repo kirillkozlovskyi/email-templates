@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta content="telephone=no" name="format-detection">
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>How to Deliver Speed-of-Thought Analytics at Scale in the Cloud</title>
+  <style type="text/css">
+    table {border-collapse:separate;}
+    a, a:link, a:visited {text-decoration: none; color: #00788a;}
+    a:hover {text-decoration: underline;}
+    h2,h2 a,h2 a:visited,h3,h3 a,h3 a:visited,h4,h5,h6,.t_cht {color:#000 !important;}
+    .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td {line-height: 100%;}
+    .ExternalClass {width: 100%;}
+  </style>
+
+</head>
+<body style="margin: 0; background-color: #ececec; padding: 40px 0; font-family: Arial, sans-serif;">
+<!-- PRE-HEADER TEXT -->
+<span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+  Join this webinar featuring the VP of Analytics at Rakuten Rewards, Mark Stange-Tregear, to learn how Rakuten Rewards their mission to enable its employees to derive insights from company data faster, with more security, governance, and agility, using AtScale’s Semantic Layer while leveraging the speed and scalability of their Data Cloud, Snowflake.
+ </span>
+
+<style>
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_font-webfont.woff2) format('woff2'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/Proxima_Nova_Font.otf) format('otf'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_font-webfont.woff) format('woff'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_font-webfont.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_bold-webfont.woff2) format('woff2'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_bold-webfont.woff) format('woff'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_bold-webfont.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_extrabold-webfont.woff2) format('woff2'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_extrabold-webfont.woff) format('woff'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_extrabold-demo.html) format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_black-webfont.woff2) format('woff2'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_black-webfont.woff) format('woff'),
+    url(https://go.atscale.com/rs/222-ZYS-158/images/proxima_nova_black-webfont.ttf) format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Signika';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://go.atscale.com/rs/222-ZYS-158/images/Signika-Light.otf) format('otf');
+  }
+  body, table, tr, td, p, span {
+    font-family: 'Signika', Arial, sans-serif;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  @media only screen and (max-width: 640px) {
+    body {padding: 0!important;}
+    h1 {font-size: 30px!important;}
+  }
+</style>
+
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="font-family: 'Signika', Arial, sans-serif">
+  <tbody>
+  <tr>
+    <td style="width: 100%;">
+      <!--[if mso]>
+      <center>
+        <table><tr><td width="650">
+      <![endif]-->
+      <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 auto; border-collapse: collapse; max-width: 650px;" role="presentation">
+        <tbody>
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" width="100%" background="https://go.atscale.com/rs/222-ZYS-158/images/bg_img_August-min.jpg" style="background-size: cover; background-color: #5d1c5e" role="presentation">
+              <tbody>
+              <tr>
+                <td>
+                  <table cellpadding="0" cellspacing="0" role="presentation">
+                    <tbody>
+                    <tr>
+                      <td>
+                        <a href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" style="">
+                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                            <tr>
+                              <td style="padding: 0 40px 0 40px">
+                                <table style="margin: 28px 0 50px 0;" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                  <tr>
+                                    <td>
+                                      <img src="https://go.atscale.com/rs/222-ZYS-158/images/icon_logo_Atskale_white.png" alt="AtScale" height="20">
+                                    </td>
+                                    <td style="text-align: right">
+                                      <img src="https://go.atscale.com/rs/222-ZYS-158/images/icon_Live_Webinar.png" alt="Live Webinar" height="19">
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="padding: 0 40px 20px 40px">
+                                <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                  <tr>
+                                    <td>
+                                      <p style="font-family: 'Proxima Nova', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 100%; line-height: 45px; color: #ffffff; text-transform: uppercase; margin: 0; font-size: 42px; font-weight: 900; letter-spacing: 0; text-decoration: none; text-align: center;">
+                                        How to Deliver Speed-of-Thought Analytics at Scale in the Cloud
+                                      </p>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 0 40px 0 40px" >
+                        <!--[if mso]>
+                        <center>
+                          <table cellpadding="0" cellspacing="0"><tr><td width="313">
+                        <![endif]-->
+                        <table cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto;">
+                          <tbody>
+                          <tr>
+                            <td style="width: 153px; vertical-align: top;">
+                              <p style="text-align: center; margin-bottom: 0; padding: 0 17px;">
+                                <img src="https://go.atscale.com/rs/222-ZYS-158/images/speacker_Mark_Stange.png" alt="Mark Stange" height="132">
+                              </p>
+                              <p style="font-family: 'Proxima Nova', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 16px; margin: 0; font-weight: bold; font-size: 14px;">
+                                <a href="https://www.linkedin.com/in/mark-stange-tregear/" style="color: #414141; display: block; width: 153px; text-align: center; padding: 0 5px;">Mark Stange-<br>Tregear</a>
+                              </p>
+                              <p style="mso-line-height-rule: exactly; line-height: 120%; line-height: 17px; margin: 4px 0 20px 0; font-weight: 300; font-size: 12px; color: #6D727C; text-align: center; padding: 0 5px;width: 153px;">
+                                VP of Analytics
+                              </p>
+                            </td>
+                            <td style="width: 153px; vertical-align: top;">
+                              <p style="text-align: center; margin-bottom: 0; padding: 0 17px;">
+                                <img src="https://go.atscale.com/rs/222-ZYS-158/images/speacker_Dave_Mariani_color.png" alt="Dave Mariani" height="132">
+                              </p>
+                              <p style="font-family: 'Proxima Nova', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 16px; margin: 0; font-weight: bold; font-size: 14px;">
+                                <a href="https://www.linkedin.com/in/davidpmariani/" style="color: #414141; display: block; width: 153px; text-align: center; padding: 0 5px;">Dave Mariani</a>
+                              </p>
+                              <p style="mso-line-height-rule: exactly; line-height: 120%; line-height: 17px; margin: 4px 0 20px 0; font-weight: 300; font-size: 12px; color: #6D727C; text-align: center; padding: 0 5px; width: 153px;">
+                                Chief Technology<br> Officer, Founder
+                              </p>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <!--[if mso]>
+                        </td></tr></table>
+                        </center>
+                        <![endif]-->
+                      </td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background-color: #ffffff; padding: 40px 40px 0 40px;">
+            <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+              <tbody>
+              <tr>
+                <td>
+                  <!--[if mso]>
+                  <table width="570" align="center">
+                    <tr>
+                      <td width="250">
+                  <![endif]-->
+                  <table cellpadding="0" cellspacing="0" width="250" role="presentation" align="left" style="margin-bottom: 0; margin-right: 20px;"  >
+                    <tbody>
+                    <tr>
+                      <td style="background-color: #F7F7F7; border-radius: 10px; ">
+                        <a href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" style="">
+                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                            <tbody>
+                            <tr>
+                              <td style="padding: 30px 30px 15px;">
+                                <p style="font-family: 'Proxima Nova', Arial, sans-serif; font-weight: 700; font-size: 25px; line-height: 35px; color: #414141; margin: 0 0 15px;">You’re invited!</p>
+                                <table cellpadding="0" cellspacing="0" style="margin-bottom: 12px;" role="presentation">
+                                  <tbody>
+                                  <tr>
+                                    <td>
+                                      <img src="https://go.atscale.com/rs/222-ZYS-158/images/icon_celendar_blue.png" alt="Calendar" height="20">
+                                    </td>
+                                    <td>
+                                      <p style="margin: 0 0 0 13px; font-weight: 400; font-size: 16px;line-height: 1; color: #414141;">August 3, 2022</p>
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" style="margin-bottom: 12px;" role="presentation">
+                                  <tbody>
+                                  <tr>
+                                    <td>
+                                      <img src="https://go.atscale.com/rs/222-ZYS-158/images/icon_clock_blue.png" alt="Clock" height="20">
+                                    </td>
+                                    <td>
+                                      <p style="margin: 0 0 0 13px; font-weight: 400; font-size: 16px;line-height: 1; color: #414141;">2PM ET / 11 AM PT</p>
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                                <table cellpadding="0" cellspacing="0" role="presentation">
+                                  <tbody>
+                                  <tr>
+                                    <td>
+                                      <img src="https://go.atscale.com/rs/222-ZYS-158/images/icon_sant_watch_blue.png" alt="Hourglass" height="20">
+                                    </td>
+
+                                    <td>
+                                      <p style="margin: 0 0 0 13px; font-weight: 400; font-size: 16px;line-height: 1; color: #414141;">60 min session</p>
+                                    </td>
+
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td style="padding: 0 30px 27px 30px;">
+                                <!--[if mso]>
+                                <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                                <![endif]-->
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                  <tr>
+                                    <td>
+                                      <!--[if mso]>
+                                      <table border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto">
+                                        <tr>
+                                          <td style="position: relative">
+                                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="display:block;height:48px;v-text-anchor:middle;width:174px;padding-bottom: 4px" arcsize="8%" stroke="f" fillcolor="#05516A">
+                                            </v:roundrect>
+                                            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" style="display: block; top: 0;left: 0;position:absolute;height:44px;v-text-anchor:middle;width:174px;" arcsize="8%" stroke="f" fillcolor="#0095C7">
+                                              <w:anchorlock/>
+                                              <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #ffffff; text-transform: uppercase; letter-spacing: .5px;">
+                                                Register
+                                              </center>
+                                            </v:roundrect>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                      <![endif]-->
+                                      <!--[if !mso]><!-->
+                                      <table border="0" cellspacing="0" cellpadding="0" style="background-color: #05516A; border-radius: 4px; margin: 0" role="presentation">
+
+                                        <tr>
+                                          <td style="padding-bottom: 4px">
+                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0" role="presentation">
+                                              <tr>
+                                                <td bgcolor="#0095C7" style="border-radius:4px" align="center">
+                                                  <p
+                                                          style="font-family: 'Proxima Nova', 'Arial', sans-serif;
+                                                            line-height: 120%;
+                                                              font-size: 16px;
+                                                               font-weight: 600;
+                                                                color: #ffffff;
+                                                                 text-decoration: none;
+                                                                  display: inline-block;
+                                                                   text-transform: uppercase;
+                                                                    letter-spacing: 3px;
+                                                                     padding: 15px 40px 14px 40px;
+                                                                      margin: 0;">Register</p>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                        </tr>
+
+                                      </table>
+                                      <!--<![endif]-->
+                                    </td>
+                                  </tr>
+                                </table>
+                                <!--[if mso]>
+                                </td></tr></table>
+                                <![endif]-->
+                              </td>
+                            </tr>
+
+                            </tbody>
+                          </table>
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <!--[if mso]>
+                  </td>
+                  <td width="275">
+                  <![endif]-->
+                  <table cellpadding="0" cellspacing="0" width="275" role="presentation" align="left" style="margin-bottom: 0px;">
+                    <tr>
+                      <td>
+                        <p style=" font-weight: 300; font-size: 16px; line-height: 25px; color: #6D727C; margin-top: 0; margin-bottom: 15px; text-align: left;">
+                          Join this webinar featuring the VP of Analytics at Rakuten Rewards, Mark Stange-Tregear,
+                          to learn how Rakuten Rewards their mission to enable its employees to derive insights from
+                          company data faster, with more security, governance, and agility, using AtScale’s Semantic
+                          Layer while leveraging the speed and scalability of their Data Cloud, Snowflake
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                  <!--[if mso]>
+                  </td>
+                  </tr>
+                  </table>
+                  <![endif]-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background-color: #ffffff; padding: 15px 40px 40px 40px;">
+            <p style=" font-weight: 300; font-size: 16px; line-height: 25px; color: #6D727C; margin-top: 0; margin-bottom: 15px;">This live customer webinar and Q&A session will cover how Rakuten:</p>
+            <ul type="square" style="margin-top: 0; padding-left: 18px; ">
+              <li style="color: #0095C7; font-size: 22px; margin-bottom: 6px;"><span style="color: #6D727C; font-size: 16px; font-weight: 300; line-height: 25px;">Migrated to Snowflake with no business or data service disruption</span></li>
+              <li style="color: #0095C7; font-size: 22px; margin-bottom: 6px;"><span style="color: #6D727C; font-size: 16px; font-weight: 300; line-height: 25px;">Uses AtScale for resource-saving autonomous data engineering and auto-tuned query optimization </span></li>
+              <li style="color: #0095C7; font-size: 22px; margin-bottom: 6px;"><span style="color: #6D727C; font-size: 16px; font-weight: 300; line-height: 25px;">Applies Snowflake’s elastic and scalable resource model to maintain responsive data analysis during peak demand periods</span></li>
+              <li style="color: #0095C7; font-size: 22px; margin-bottom: 6px;"><span style="color: #6D727C; font-size: 16px; font-weight: 300; line-height: 25px;">Leverages AtScale’s semantic layer data aggregates to deliver agility and lightning fast query performance while automatically optimizing Rakuten’s analytical workloads</span></li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #F7F7F7" role="presentation">
+              <tbody>
+              <tr>
+                <td style="padding: 60px 40px 56px 40px">
+                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                    <tbody>
+                    <tr>
+                      <td>
+                        <p style="font-family: 'Proxima Nova', Arial, sans-serif; color: #0095C7; font-weight: bold; font-size: 16px; text-transform: uppercase; text-align: center; margin: 0 0 5px; letter-spacing: 1.5px;">
+                          Can’t make the live event?
+                        </p>
+                        <p style="font-family: 'Proxima Nova', Arial, sans-serif; color: #414141; font-size: 27px; line-height: 1.5; text-align: center; font-weight: bold; margin: 0 0 25px;">
+                          Register to receive the recording
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <!--[if mso]>
+                        <center>
+                          <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                        <![endif]-->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                          <tr>
+                            <td>
+                              <!--[if mso]>
+                              <table border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto">
+                                <tr>
+                                  <td style="position: relative">
+                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="display:block;height:60px;v-text-anchor:middle;width:280px;padding-bottom: 4px" arcsize="8%" stroke="f" fillcolor="#05516A">
+                                    </v:roundrect>
+                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" style="display: block; top: 0;left: 0;position:absolute;height:56px;v-text-anchor:middle;width:280px;" arcsize="8%" stroke="f" fillcolor="#0095C7">
+                                      <w:anchorlock/>
+                                      <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #ffffff; text-transform: uppercase; letter-spacing: .5px;">
+                                        Register Now
+                                      </center>
+                                    </v:roundrect>
+                                  </td>
+                                </tr>
+                              </table>
+                              <![endif]-->
+                              <!--[if !mso]><!-->
+                              <table border="0" cellspacing="0" cellpadding="0" style="background-color: #05516A; border-radius: 4px; margin: 0 auto;" role="presentation">
+                                <tr>
+                                  <td style="padding-bottom: 4px">
+                                    <table border="0" cellspacing="0" cellpadding="0" style="margin: 0 auto" role="presentation">
+                                      <tr>
+                                        <td bgcolor="#0095C7" style="border-radius:4px" align="center">
+                                          <a href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" target="_blank" style="font-family: 'Proxima Nova', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 19px; font-size: 16px; font-weight: 600; color: #ffffff; text-decoration: none; display: inline-block; text-transform: uppercase;  letter-spacing: 3.1px; padding: 19px 65px 18px 65px">Register Now</a>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+                              <!--<![endif]-->
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if mso]>
+                        </td></tr></table>
+                        </center>
+                        <![endif]-->
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #414141" role="presentation">
+              <tbody>
+              <tr>
+                <td style="padding: 60px 40px 60px 40px;">
+                  <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                    <tbody>
+                    <tr>
+                      <td style=" text-align: center">
+                        <a href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/" style=" text-decoration: underline">
+                          <img src="https://go.atscale.com/rs/222-ZYS-158/images/AtscaleLogo_blue.png" alt="AtScale" height="20">
+                        </a>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td style="padding-top: 18px">
+                        <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                          <tr>
+                            <td>
+                              <p style="mso-line-height-rule: exactly; line-height: 150%; line-height: 21px; margin: 0; font-family: Arial,sans-serif; font-weight: 300; font-size: 16px; text-align: center; color: #8d8d8d; letter-spacing: .1px">
+                                AtScale Inc 1 Lincoln St Boston Massachusetts United States
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td style="padding: 16px 0 0;">
+                        <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                          <tr>
+                            <td>
+                              <p style="mso-line-height-rule: exactly; line-height: 150%; line-height: 18px; margin: 0; text-align: center; font-family: Arial, sans-serif; font-size: 14px; font-weight: 300; color: #8d8d8d">
+                                You received this email because you signed up to receive marketing information from AtScale.
+                                If you'd prefer not to receive updates, you can <a href="https://go.atscale.com/UnsubscribePage.html" style=" text-decoration: none; color: #0095C7">unsubscribe here</a>.
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <!--[if mso]>
+      </td></tr></table>
+      </center>
+      <![endif]-->
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
