@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta content="telephone=no" name="format-detection">
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Using AtScale's Semantic Layer with your Data Cloud</title>
+    <style type="text/css">
+        table {border-collapse:separate;}
+        a, a:link, a:visited {text-decoration: none; color: #00788a;}
+        a:hover {text-decoration: underline;}
+        h2,h2 a,h2 a:visited,h3,h3 a,h3 a:visited,h4,h5,h6,.t_cht {color:#000 !important;}
+        .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td {line-height: 100%;}
+        .ExternalClass {width: 100%;}
+    </style>
+
+</head>
+<body style="margin: 0; background-color: #ececec; padding: 40px 0; font-family: 'Signika', Arial, sans-serif;">
+<!-- PRE-HEADER TEXT -->
+<span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
+AtScale and Snowflake have been working together for years. AtScale’s semantic layer and business-oriented dimensional
+    model makes it easy to analyze data using common BI platforms (PowerBI, Excel, Looker, Tableau) and Data Science
+    tools (DataRobot, H2O, SageMaker, etc.) while pushing down the compute of those queries to Snowflake.
+</span>
+
+<!--[if !mso]>
+<style>
+    @font-face {
+        font-family: 'Proxima Nova';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Proxima Nova-Reguler'), url(https://go.atscale.com/rs/222-ZYS-158/images/Mark Simonson - Proxima Nova A.otf) format('otf');
+    }
+    @font-face {
+        font-family: 'Signika';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Signika-light'), url(https://go.atscale.com/rs/222-ZYS-158/images/Signika-Light.otf) format('otf');
+    }
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Inter'), url(https://go.atscale.com/rs/222-ZYS-158/images/Inter-Medium.ttf) format('otf');
+    }
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Inter'), url(https://go.atscale.com/rs/222-ZYS-158/images/Inter-Regular.ttf) format('otf');
+    }
+</style>
+<![endif]-->
+<!--[if mso]>
+<style>
+    body, table, tr, td, p, span {
+        font-family: 'Signika', Arial, sans-serif;
+    }
+</style>
+<![endif]-->
+
+<style media="all">
+    a:hover {
+        text-decoration: none;
+    }
+    @media only screen and (max-width: 640px) {
+        body {padding: 0!important;}
+        h1 {font-size: 30px!important;}
+        .tdContainer {
+            padding: 0 20px 0 20px!important;
+        }
+        .tdContainer.registerBottom {
+            padding-top: 40px!important;
+            padding-bottom: 35px!important;
+        }
+        .infoFirst img{
+            width: 60px;
+        }
+        .block.text p {
+            text-align: center;
+        }
+        .block.text table {
+            margin: 0 auto;
+        }
+
+    }
+</style>
+<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="font-family: 'Signika', Arial, sans-serif">
+    <tbody>
+    <tr>
+        <td style="width: 100%">
+            <!--[if mso]>
+            <center>
+                <table><tr><td width="600">
+            <![endif]-->
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 auto; border-collapse: collapse; max-width: 650px;" role="presentation">
+                <tbody>
+                <tr>
+                    <td bgcolor="#ffffff">
+                        <a href="https://www.atscale.com/">
+                        <table cellpadding="0" cellspacing="0" width="100%" style="background-size: cover; background-color: #ffffff" role="presentation">
+                            <tbody>
+                            <tr>
+                                <td style="padding: 22px 40px 20px;">
+                                    <img src="https://go.atscale.com/rs/222-ZYS-158/images/Atscale_dark.png" alt="" height="20">
+                                </td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" width="100%" style="background-size: cover; background-color: #ffffff" role="presentation">
+                            <tbody>
+                                <tr>
+                                    <td  class="tdContainer">
+                                        <a href="https://www.atscale.com/">
+                                            <img src="https://go.atscale.com/rs/222-ZYS-158/images/header-thank-you-for-downloading%402x-min.jpg" alt="" width="650">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="background-color: #FFFFFF; padding: 40px 40px 28px 40px;">
+                        <table cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td style="border-bottom: 1px solid #E4E4E4; padding-bottom: 40px;">
+                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 31px; margin: 0; font-weight: 500; font-size: 24px; color: #131E29;">
+                                        Popular Resources
+                                    </p>
+                                </td>
+                            </tr> <!-- Title Popular Resources -->
+
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding-bottom: 40px; padding-top: 40px;">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="padding-bottom: 22px; border-bottom: 1px solid #E4E4E4;">
+                                                            <table cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr>
+                                                                    <td style="vertical-align: top;">
+                                                                        <img src="https://go.atscale.com/rs/222-ZYS-158/images/resource-make-insights-min.jpg" alt="Make Insights Actionable with AI and BI" height="122">
+                                                                    </td>
+                                                                    <td style="width: 100%; vertical-align: top">
+                                                                        <table style="margin: 0 0 0 25px;">
+                                                                            <tr>
+                                                                                <td style="vertical-align: middle;">
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 21px; margin: 0 0 12px; font-weight: 400; font-size: 22px; line-height: 28px; color: #414141;">
+                                                                                        Make Insights Actionable with AI and BI
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 19px; color: #0047BB; margin: 0 0 16px">
+                                                                                        Book
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 26px; margin: 0 0 24px 0; font-weight: 300; font-size: 16px; color: #6D727C;">
+                                                                                        20+ AI and BI leaders provide practical advice on designing and
+                                                                                        executing winning Data and Analytics strategies. Get your copy
+                                                                                        <a href="https://www.atscale.com/resource/make-insights-actionable-with-ai-and-bi/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="color: #0047BB; text-decoration: underline;">here</a>.
+                                                                                    </p>
+                                                                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <!--[if mso]>
+                                                                                                <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                                                                                                <![endif]-->
+                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <!--[if mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0">
+                                                                                                                <tr>
+                                                                                                                    <td style="position: relative">
+                                                                                                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/make-insights-actionable-with-ai-and-bi/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="display: block; top: 0;left: 0;position:absolute;height:56px;v-text-anchor:middle;width:221px;" arcsize="8%" stroke="f" fillcolor="#0047BB">
+                                                                                                                            <w:anchorlock/>
+                                                                                                                            <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #B0E2E2; text-transform: uppercase; letter-spacing: .5px;">
+                                                                                                                                Download Now
+                                                                                                                            </center>
+                                                                                                                        </v:roundrect>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                            <![if !mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                            <tr>
+                                                                                                                                <td bgcolor="#0047BB">
+                                                                                                                                    <a href="https://www.atscale.com/resource/make-insights-actionable-with-ai-and-bi/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" target="_blank" style="font-family: 'Inter', Arial, sans-serif;  mso-line-height-rule: exactly; line-height: 120%; line-height: 19px; font-size: 12px; font-weight: 600; color: #B0E2E2; text-decoration: none; display: inline-block; text-transform: uppercase;  letter-spacing: 3.1px; padding: 21px 52px;">Download Now</a>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <!--[if mso]>
+                                                                                                </td></tr></table>
+                                                                                                <![endif]-->
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr><!-- Card Make Insights Actionable with AI and BI -->
+
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding-bottom: 40px; padding-top: 40px;">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="padding-bottom: 22px; border-bottom: 1px solid #E4E4E4;">
+                                                            <table cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr>
+                                                                    <td style="vertical-align: top;">
+                                                                        <img src="https://go.atscale.com/rs/222-ZYS-158/images/resource-Semantic-layer-min.jpg" alt="Semantic Layer Summit" height="122">
+                                                                    </td>
+                                                                    <td style="width: 100%; vertical-align: top">
+                                                                        <table style="margin: 0 0 0 25px;">
+                                                                            <tr>
+                                                                                <td style="vertical-align: middle;">
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 21px; margin: 0 0 12px; font-weight: 400; font-size: 22px; line-height: 28px; color: #414141;">
+                                                                                        Semantic Layer Summit
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 19px; color: #0047BB; margin: 0 0 16px">
+                                                                                        Virtual Event
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 26px; margin: 0 0 24px 0; font-weight: 300; font-size: 16px; color: #6D727C;">
+                                                                                        Now on Demand! Missed the Summit? No worries, you can watch all of the recordings from the day
+                                                                                        <a href="https://www.atscale.com/resource/semantic-layer-summit-on-demand-sessions/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="color: #0047BB; text-decoration: underline;">here</a>.
+                                                                                    </p>
+                                                                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <!--[if mso]>
+                                                                                                <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                                                                                                <![endif]-->
+                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <!--[if mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0">
+                                                                                                                <tr>
+                                                                                                                    <td style="position: relative">
+                                                                                                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/semantic-layer-summit-on-demand-sessions/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="display: block; top: 0;left: 0;position:absolute;height:56px;v-text-anchor:middle;width:193px;" arcsize="8%" stroke="f" fillcolor="#0047BB">
+                                                                                                                            <w:anchorlock/>
+                                                                                                                            <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #B0E2E2; text-transform: uppercase; letter-spacing: .5px;">
+                                                                                                                                Learn More
+                                                                                                                            </center>
+                                                                                                                        </v:roundrect>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                            <![if !mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                            <tr>
+                                                                                                                                <td bgcolor="#0047BB">
+                                                                                                                                    <a href="https://www.atscale.com/resource/semantic-layer-summit-on-demand-sessions/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" target="_blank" style="font-family: 'Inter', Arial, sans-serif;  mso-line-height-rule: exactly; line-height: 120%; line-height: 19px; font-size: 12px; font-weight: 600; color: #B0E2E2; text-decoration: none; display: inline-block; text-transform: uppercase;  letter-spacing: 3.1px; padding: 21px 52px;">Learn More</a>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <!--[if mso]>
+                                                                                                </td></tr></table>
+                                                                                                <![endif]-->
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr><!-- Card Semantic Layer Summit -->
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 40px; background-color: #EAEDF2;">
+                        <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p style="font-family: 'Inter', Arial, sans-serif; font-size: 24px; line-height: 28px; font-weight: 500; color: #131E29; margin-top: 0">
+                                                    We’re making it Snow in October!
+                                                </p>
+                                                <p style="font-family: 'Inter', Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 22px; color: #414141; padding-bottom: 15px; margin: 0;">
+                                                    AtScale and Snowflake have been working together for years.
+                                                    AtScale’s <a href="https://www.atscale.com/solutions/universal-semantic-layer/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="color: #0047BB; text-decoration: underline;"> semantic layer </a> and business-oriented dimensional model makes
+                                                    it easy to analyze data using common BI platforms (PowerBI, Excel, Looker, Tableau)
+                                                    and Data Science tools (DataRobot, H2O, SageMaker, etc.) while pushing down the compute of those queries to Snowflake.
+                                                </p>
+                                            </td>
+                                            <td style="padding-left: 30px; vertical-align: top">
+                                                <img src="https://go.atscale.com/rs/222-ZYS-158/images/Snowflake_logo_white_bg-min.jpg" alt="Snowflake" width="129">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr><!-- Section We’re making it Snow in October! -->
+
+                <tr>
+                    <td style="background-color: #FFFFFF; padding: 40px;">
+                        <table cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td style="border-bottom: 1px solid #E4E4E4; padding-bottom: 40px;">
+                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 31px; margin: 0; font-weight: 500; font-size: 24px; color: #131E29;">
+                                        Featured Snowflake Resources
+                                    </p>
+                                </td>
+                            </tr> <!-- Title Featured Snowflake Resources -->
+
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding-top: 40px;">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr>
+                                                                    <td style="vertical-align: top;">
+                                                                        <img src="https://go.atscale.com/rs/222-ZYS-158/images/Resource_Optimaze_your_analytics-min.jpg" alt="Optimize Your Analytics on the Snowflake Data Cloud" height="122">
+                                                                    </td>
+                                                                    <td style="width: 100%; vertical-align: top">
+                                                                        <table style="margin: 0 0 0 25px;">
+                                                                            <tr>
+                                                                                <td style="vertical-align: middle;">
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 21px; margin: 0 0 12px; font-weight: 400; font-size: 22px; line-height: 28px; color: #414141;">
+                                                                                        Optimize Your Analytics on the Snowflake Data Cloud
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 19px; color: #0047BB; margin: 0 0 16px">
+                                                                                        New Virtual Demo & Deep Dive
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 26px; margin: 0 0 24px 0; font-weight: 300; font-size: 16px; color: #6D727C;">
+                                                                                        Experience AtScale’s Semantic Layer and Snowflake together, delivering a powerful
+                                                                                        platform for BI teams to build robust business insights that are multidimensional,
+                                                                                        resulting in Enterprise-grade analytics – all while driving faster time-to-insights
+                                                                                        and vastly improved resource consumption in your Data Cloud.
+                                                                                    </p>
+                                                                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <!--[if mso]>
+                                                                                                <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                                                                                                <![endif]-->
+                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <!--[if mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0">
+                                                                                                                <tr>
+                                                                                                                    <td style="position: relative">
+                                                                                                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/wbr-optimize-your-analytics-on-the-snowflake-data-cloud/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="display: block; top: 0;left: 0;position:absolute;height:56px;v-text-anchor:middle;width:191px;" arcsize="8%" stroke="f" fillcolor="#0047BB">
+                                                                                                                            <w:anchorlock/>
+                                                                                                                            <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #B0E2E2; text-transform: uppercase; letter-spacing: .5px;">
+                                                                                                                                Watch Now
+                                                                                                                            </center>
+                                                                                                                        </v:roundrect>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                            <![if !mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                            <tr>
+                                                                                                                                <td bgcolor="#0047BB">
+                                                                                                                                    <a href="https://www.atscale.com/resource/wbr-optimize-your-analytics-on-the-snowflake-data-cloud/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" target="_blank" style="font-family: 'Inter', Arial, sans-serif;  mso-line-height-rule: exactly; line-height: 120%; line-height: 19px; font-size: 12px; font-weight: 600; color: #B0E2E2; text-decoration: none; display: inline-block; text-transform: uppercase;  letter-spacing: 3.1px; padding: 21px 52px;">Watch Now</a>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <!--[if mso]>
+                                                                                                </td></tr></table>
+                                                                                                <![endif]-->
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr><!-- Card Optimize Your Analytics on the Snowflake Data Cloud -->
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 40px; background-color: #EAEDF2;">
+                        <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p style="font-family: 'Inter', Arial, sans-serif; font-size: 24px; line-height: 28px; font-weight: 500; color: #131E29; margin: 0">
+                                                    Tech Talks
+                                                </p>
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-top: 20px">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #0047BB; margin: 0 0 6px; line-height: 16px;">Tech Talk</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px;">
+                                                            <a href="https://www.atscale.com/resource/tt-snowflake-dimensional-analysis/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How AtScale + Snowflake Enable Dimensional Analysis in the Data Cloud
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                Hear from Rob Saenz, Senior SE at Snowflake, and AtScale how you can eliminate data marts like SSAS to perform modern native dimensional analysis in the Data Cloud at better scale.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-top: 20px">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #0047BB; margin: 0 0 6px; line-height: 16px;">Tech Talk</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px;">
+                                                            <a href="https://www.atscale.com/resource/wbr-tt-accelerate-ai-impact-semantic-layer-snowflake/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How to Accelerate AI Impact with a Feature Store and Semantic Layer on Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                Hear from Miles Adkins, Senior Partner Sales Engineer, AI & ML at
+                                                                Snowflake and AtScale how you can drive more data science
+                                                                and ML impact using FEAST, Snowflake and a semantic layer.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-top: 20px">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #0047BB; margin: 0 0 6px; line-height: 16px;">Tech Talk</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px;">
+                                                            <a href="https://www.atscale.com/resource/wbr-tt-snowflake-data-science/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How to Streamline Data Science and Feature Creation Workflows in Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                Hear from Simon Field, SnowCAT Technical Director at Snowflake, and AtScale
+                                                                how you can run better data science workflows and improve
+                                                                creating features using Snowflake & AtScale.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-top: 20px">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #0047BB; margin: 0 0 6px; line-height: 16px;">Tech Talk</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px;">
+                                                            <a href="https://www.atscale.com/resource/using-semantic-layer-with-snowflake-step-by-step-guide/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How to Get Started Using the AtScale Semantic Layer with Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; line-height: 20px;">
+                                                                This step-by-step tech guide will show you exactly how to
+                                                                get up and running with AtScale Semantic Layer Platform and
+                                                                the Snowflake Data Cloud.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style="padding-left: 30px; vertical-align: top">
+                                                <img src="https://go.atscale.com/rs/222-ZYS-158/images/Tech-Talk-white-bg-min.jpg" alt="Snowflake" width="129">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr><!-- Section Tech Talks -->
+
+                <tr>
+                    <td style="padding: 40px; background-color: #ffffff;">
+                        <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p style="font-family: 'Inter', Arial, sans-serif; font-size: 24px; line-height: 28px; font-weight: 500; color: #131E29; margin: 0">
+                                                    More Tech Resources
+                                                </p>
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px; padding-top: 20px">
+                                                            <a href="https://www.atscale.com/resource/atscale-snowflake-demo-deep-dive/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                AtScale + Snowflake Overview & Demo
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                Hear from AtScae’s Founder David Marini and see how AtScale
+                                                                & Snowflake together can deliver actionable insights for
+                                                                everyone in your organization with a demo.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px; padding-top: 20px">
+                                                            <a href="https://www.atscale.com/resource/demo-enterprise-grade-analytics-snowflake/thank-you/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How to deliver Enterprise-grade analytics with AtScale + Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                Watch this hands-on lab with AtScale’s lead Semantic
+                                                                Modeling trainer, Bob Kelly & AtScale’s Founder David
+                                                                Marini for an in-depth walkthrough of using AtScale with Snowflake. .
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px; padding-top: 20px">
+                                                            <a href="https://www.atscale.com/resource/vid-powerbi-snowflake-shine/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                How to Make Power BI Shine on Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-bottom: 1px solid #CFD3DB">
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; padding-bottom: 24px; line-height: 20px;">
+                                                                See how you can run the world’s most popular BI tool on
+                                                                the most popular Data Cloud with a live connection and
+                                                                at unparalleled scale & efficiency with AtScale’s semantic layer.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <table cellpadding="0" cellspacing="0" width="100%"  role="presentation">
+                                                    <tr>
+                                                        <td style="padding-bottom: 6px; padding-top: 20px">
+                                                            <a href="https://www.atscale.com/resource/atscale-snowflake/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; color: #414141; text-decoration: underline;">
+                                                                Accelerate Data-Driven Decisions with AtScale and Snowflake
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <p style="font-family: 'Inter', Arial, sans-serif; font-size: 13px; font-weight: 400; color: #414141; margin: 0; line-height: 20px;">
+                                                                Get a datasheet that briefs the joint value and benefits
+                                                                of using Snowflake & AtScale together.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td style="padding-left: 30px; vertical-align: top">
+                                                <img src="https://go.atscale.com/rs/222-ZYS-158/images/Resorces-tech-talk-icon-min.jpg" alt="More Tech Resources" width="129">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr><!-- Section More Tech Resources -->
+
+                <tr>
+                    <td style="background-color: #EAEDF2; padding: 40px;">
+                        <table cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+
+                            <tr>
+                                <td style="border-bottom: 1px solid #E4E4E4; padding-bottom: 40px;">
+                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 31px; margin: 0; font-weight: 500; font-size: 24px; color: #131E29;">
+                                        AtScale + Snowflake Customer Webinar with Rakuten Rewards
+                                    </p>
+                                </td>
+                            </tr> <!-- Title Featured Snowflake Resources -->
+
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                                        <tbody>
+                                        <tr>
+                                            <td style="padding-top: 40px;">
+                                                <table cellpadding="0" cellspacing="0" width="100%">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr>
+                                                                    <td style="vertical-align: top;">
+                                                                        <img src="https://go.atscale.com/rs/222-ZYS-158/images/Resources-Racuten-min.jpg" alt="How to Deliver Speed-of-Thought Analytics at Scale with a Data Mesh in the Cloud" height="122">
+                                                                    </td>
+                                                                    <td style="width: 100%; vertical-align: top">
+                                                                        <table style="margin: 0 0 0 25px;">
+                                                                            <tr>
+                                                                                <td style="vertical-align: middle;">
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 21px; margin: 0 0 12px; font-weight: 400; font-size: 22px; line-height: 28px; color: #414141;">
+                                                                                        How to Deliver Speed-of-Thought Analytics at Scale with a Data Mesh in the Cloud
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 19px; color: #0047BB; margin: 0 0 16px">
+                                                                                        On-Demand Webinar
+                                                                                    </p>
+                                                                                    <p style="font-family: 'Inter', Arial, sans-serif; mso-line-height-rule: exactly; line-height: 120%; line-height: 26px; margin: 0 0 24px 0; font-weight: 300; font-size: 16px; color: #6D727C;">
+                                                                                        At <a href="https://www.atscale.com/resource/case-study-atscale-and-rakuten/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="color: #0047BB; text-decoration: underline;">Rakuten</a>,
+                                                                                        they modernized from Hadoop to Snowflake, and used Atscale to improve query times by 14x in Tableau and lowered their Data Cloud compute costs by 4x.
+                                                                                    </p>
+                                                                                    <table cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <!--[if mso]>
+                                                                                                <table cellpadding="0" cellspacing="0"><tr><td width="300">
+                                                                                                <![endif]-->
+                                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <!--[if mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0">
+                                                                                                                <tr>
+                                                                                                                    <td style="position: relative">
+                                                                                                                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" style="display: block; top: 0;left: 0;position:absolute;height:56px;v-text-anchor:middle;width:191px;" arcsize="8%" stroke="f" fillcolor="#0047BB">
+                                                                                                                            <w:anchorlock/>
+                                                                                                                            <center style="font-family: Arial, sans-serif;font-size:16px;font-weight:bold;font-weight: 600; color: #B0E2E2; text-transform: uppercase; letter-spacing: .5px;">
+                                                                                                                                Watch Now
+                                                                                                                            </center>
+                                                                                                                        </v:roundrect>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                            <![if !mso]>
+                                                                                                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                <tr>
+                                                                                                                    <td>
+                                                                                                                        <table border="0" cellspacing="0" cellpadding="0" style="margin: 0;" role="presentation">
+                                                                                                                            <tr>
+                                                                                                                                <td bgcolor="#0047BB">
+                                                                                                                                    <a href="https://www.atscale.com/resource/wbr-speed-of-thought-analytics-at-scale-in-the-cloud/?utm_medium=email&utm_source=atscale&utm_campaign=newsletter&utm_content=null&utm_term=null" target="_blank" style="font-family: 'Inter', Arial, sans-serif;  mso-line-height-rule: exactly; line-height: 120%; line-height: 19px; font-size: 12px; font-weight: 600; color: #B0E2E2; text-decoration: none; display: inline-block; text-transform: uppercase;  letter-spacing: 3.1px; padding: 21px 52px;">Watch Now</a>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                            <![endif]-->
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                                <!--[if mso]>
+                                                                                                </td></tr></table>
+                                                                                                <![endif]-->
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr><!-- Card Optimize Your Analytics on the Snowflake Data Cloud -->
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" width="100%" style="background-color: #414141" role="presentation">
+                            <tbody>
+                            <tr>
+                                <td style="padding: 60px 40px 60px 40px;">
+                                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                        <tbody>
+                                        <tr>
+                                            <td style=" text-align: center">
+                                                <a href="https://www.atscale.com/" style=" text-decoration: underline">
+                                                    <img src="https://go.atscale.com/rs/222-ZYS-158/images/AtscaleLogo_blue.png" alt="AtScale" height="20">
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding-top: 18px">
+                                                <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                                    <tr>
+                                                        <td>
+                                                            <p style="mso-line-height-rule: exactly; line-height: 150%; line-height: 21px; margin: 0; font-family: Arial,sans-serif; font-weight: 300; font-size: 16px; text-align: center; color: #8d8d8d; letter-spacing: .1px">
+                                                                AtScale Inc 1 Lincoln St Boston Massachusetts United States
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding: 16px 0 0;">
+                                                <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
+                                                    <tr>
+                                                        <td>
+                                                            <p style="mso-line-height-rule: exactly; line-height: 150%; line-height: 18px; margin: 0; text-align: center; font-family: Arial, sans-serif; font-size: 14px; font-weight: 300; color: #8d8d8d">
+                                                                You received this email because you signed up to receive marketing information from AtScale.
+                                                                If you'd prefer not to receive updates, you can <a href="https://go.atscale.com/UnsubscribePage.html" style=" text-decoration: none; color: #0095C7">unsubscribe here</a>.
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <!--[if mso]>
+            </td></tr></table>
+            </center>
+            <![endif]-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
